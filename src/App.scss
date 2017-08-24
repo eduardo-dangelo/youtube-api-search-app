@@ -1,0 +1,57 @@
+
+
+.shell {
+  width: 900px;
+  overflow: hidden;
+  margin: 40px auto;
+  border-radius: 4px;
+  z-index: 1;
+  border: 1px solid white;
+  box-shadow: 0 4px 20px rgba(0,0,0,1);
+}
+
+.app-body {
+  display: flex;
+  position: relative;
+}
+
+.video-detail-container {
+  flex: 2;
+  position: relative;
+}
+
+.video-list-container {
+  flex: 1;
+  position: relative;
+  background: rgba(255,255,255,0.3);
+}
+
+.video-list-hidden {
+  width: 0;
+  position: relative;
+}
+
+.video-list-toggle {
+  width: 20px;
+  height: 100%;
+  background: rgba(255,255,255,0.4);
+  border-left: 1px solid white;
+  box-shadow: -1px 1px 4px rgba(0,0,0,0.5);
+  position: absolute;
+  left: -20px;
+  cursor: pointer;
+  opacity: 0;
+  transition: .3s ease;
+
+  svg {
+    margin-top: 250px;
+    position: relative;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    font-size: 20px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
