@@ -27,7 +27,7 @@ export default class SearchBar extends Component {
     const { isFullScreen } = this.props;
     return (
       <div className="search-bar">
-        <a href="http://www.youtube.com" target="_blank">
+        <a href="http://www.youtube.com" target="_blank" rel="noopener noreferrer">
           <img src={require('../img/youtube_logo.png')} alt="youtube" className="logo" />
         </a>
         <FormGroup controlId="searchBar">
