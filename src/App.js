@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import { debounce } from 'lodash';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
 import VideoDetail from './components/VideoDetail';
@@ -18,11 +18,13 @@ class App extends Component {
       videos: [],
       selectedVideo: null,
       videoList: true,
+      isFullScreen: false,
     };
 
     this.videoSearch('react js');
     this.toggleVideoList = this.toggleVideoList.bind(this);
-    // this.renderBg = this.renderBg.bind(this);
+    this.notFullScreenSize = this.notFullScreenSize.bind(this);
+    this.fullScreenSize = this.fullScreenSize.bind(this);
   }
 
   videoSearch(term) {
@@ -40,18 +42,46 @@ class App extends Component {
     }))
   }
 
+  openVideoList() {
+    this.setState({
+      videoList: true,
+    })
+  }
+
+  fullScreenSize() {
+    this.setState({
+      isFullScreen: true,
+      videoList: false,
+    })
+  }
+
+  notFullScreenSize() {
+    this.setState({
+      isFullScreen: false,
+    })
+  }
+
   render() {
-    const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 500);
-    const { videoList, selectedVideo, videos } = this.state;
+    const videoSearch = debounce((term) => {this.videoSearch(term)}, 500);
+    const { videoList, selectedVideo, videos, isFullScreen } = this.state;
     console.log(selectedVideo);
 
     return (
       <div className="app">
-        <div className="shell">
-          <SearchBar onSearchTermChange={videoSearch} />
+        <div  className={isFullScreen ? 'shell-full-screen' : 'shell'}>
+          <SearchBar 
+            onSearchTermChange={videoSearch}
+            fullScreen={() => this.fullScreenSize()} 
+            notFullScreen={() => this.notFullScreenSize()}
+            onActive={() => this.openVideoList()}
+            isFullScreen={isFullScreen}
+          />
           <div className="app-body">
             <div className="video-detail-container">
-              <VideoDetail video={selectedVideo}/>
+              <VideoDetail
+                video={selectedVideo}
+                isFullScreen={isFullScreen}
+              />
             </div>
             <div className={videoList ? 'video-list-container' : 'video-list-hidden'}>
               <div className="video-list-toggle" onClick={() => this.toggleVideoList()}>
@@ -61,6 +91,7 @@ class App extends Component {
                 <VideoList 
                   videos={videos}
                   onVideoSelect={selectedVideo => this.setState({selectedVideo: selectedVideo})}
+
                 />
               )}
             </div>

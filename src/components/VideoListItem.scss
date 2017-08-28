@@ -6,6 +6,23 @@
   transition: .3s ease;
   border-bottom: 1px solid #666666;
   border-top: 1px solid white;
+  animation: show .5s ease-in;
+
+  &:nth-child(2) {
+    animation: show .7s ease-in;
+  }
+
+  &:nth-child(3) {
+    animation: show 1s ease-in;
+  }
+
+  &:nth-child(4) {
+    animation: show 1.2s ease-in;
+  }
+
+  &:nth-child(5) {
+    animation: show 1.3s ease-in;
+  }
 
   &:first-child {
     border-top: none;
@@ -25,6 +42,7 @@
   }
 }
 
-.active {
-  background: white;
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

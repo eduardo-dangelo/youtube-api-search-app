@@ -24,8 +24,12 @@ export default class SearchBar extends Component {
   }
   
   render () {
+    const { isFullScreen } = this.props;
     return (
       <div className="search-bar">
+        <a href="http://www.youtube.com" target="_blank">
+          <img src={require('../img/youtube_logo.png')} alt="youtube" className="logo" />
+        </a>
         <FormGroup controlId="searchBar">
           <ControlLabel className="input-container">
             <div className="label">
@@ -36,9 +40,21 @@ export default class SearchBar extends Component {
               placeholder="Search..."
               value={this.state.term}
               onChange={event => this.onInputChange(event.target.value)}
+              onClick={this.props.onActive}
             />
           </ControlLabel>
         </FormGroup>
+        {isFullScreen ? (
+          <div 
+            className="full-screen-btn orange"
+            onClick={this.props.notFullScreen}
+          />
+        ) : (
+          <div 
+            className="full-screen-btn green"
+            onClick={this.props.fullScreen}
+          />
+        )}
       </div>
     );
   }
