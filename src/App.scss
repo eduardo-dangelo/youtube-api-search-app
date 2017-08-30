@@ -1,10 +1,13 @@
 
-.desktop-icon {
-  background: url('./img/youtube_logo.png');
-  width: 128px;
-  height: 128px;
+.app {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  cursor: pointer;
+background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #232323, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  box-shadow: inset 0 4px 20px rgba(0,0,0,1); 
 }
 
 .shell {
@@ -12,14 +15,17 @@
   z-index: 1;
   border-top: 1px solid white;
   border-right: 1px solid white;
-  border-bottom: 1px sobbbbbb;
-  border-left: 1px solid #bbbbbb;
+  border-bottom: 1px #666666;
+  border-left: 1px solid #666666;
   box-shadow: 0 4px 20px rgba(0,0,0,1);
-  position: relative;
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 10%;
   overflow: hidden;
   max-width: 900px;
   min-height: 540px;
-  margin: 40px auto;
+  // margin: 40px auto;
 
   @media all and (max-width: 900px) {
     margin: 0;
@@ -28,14 +34,17 @@
 
 .shell-full-screen {
   height: 99.6vh;
+  width: 99.6%;
   border-radius: 4px;
+  left: 0 !important;
+  top: 0;
   z-index: 1;
   border-top: 1px solid white;
   border-right: 1px solid white;
   border-bottom: 1px solid #bbbbbb;
   border-left: 1px solid #bbbbbb;
   box-shadow: 0 4px 20px rgba(0,0,0,1);
-  position: relative;
+  position: fixed;
   overflow: hidden;
 }
 
