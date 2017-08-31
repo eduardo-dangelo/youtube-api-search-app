@@ -25,7 +25,7 @@ class App extends Component {
       }
     };
 
-    this.videoSearch('react js');
+    this.videoSearch('hubble telescope');
     this.toggleVideoList = this.toggleVideoList.bind(this);
     this.notFullScreenSize = this.notFullScreenSize.bind(this);
     this.fullScreenSize = this.fullScreenSize.bind(this);
